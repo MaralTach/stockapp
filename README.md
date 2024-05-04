@@ -1,7 +1,7 @@
-## `Kurulum`
+## `Installation`
 
 ```
-npm install veya yarn
+npm install or yarn
 ```
 
 ## `Kullanilan Kutuphaneler`
@@ -14,10 +14,20 @@ npm install veya yarn
 - `@emotion/react`
 - `@emotion/styled`
 
-## `Kullanilacak Araclar`
+## `Used Libraries`
 
-- `Redux Dev Tools` : Chrome uzerinde calisan ve global state uzerinde yapilan tum degisikliklerin takip edilmesini saglayan tarayici uzantisidir. Indirmek icin [tiklayiniz.](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?utm_source=chrome-ntp-icon)`
+- `@reduxjs/toolkit`
+- `react-redux`
+- `axios`
+- `react-router-dom`
+- `@mui/material-ui`
+- `@emotion/react`
+- `@emotion/styled`
 
-## Uygulamanın Canlı Ornegi:
+## `Tools to be Used`
+
+- `Redux Dev Tools`: A browser extension that runs on Chrome and allows tracking of all changes made to the global state. [Click here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?utm_source=chrome-ntp-icon) to download.
+
+## Live Example of the Application:
 
 https://stock-app-tr.vercel.app/
