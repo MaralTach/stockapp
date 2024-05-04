@@ -7,11 +7,34 @@ import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import { Link, useNavigate } from "react-router-dom"
+import { Formik, Form } from "formik"
+import { object, string } from "yup"
 
 import TextField from "@mui/material/TextField"
 
 const Register = () => {
   const navigate = useNavigate()
+
+  const registerSchema = object({
+    username: string().required("Bu alan zorunludur"),
+    first_name: string().required("Bu alan zorunludur"),
+    last_name: string().required("Bu alan zorunludur"),
+    password: string()
+    .required("Şifre zorunludur")
+    .min(8, "Şifre en az 8 karakter olmalıdır")
+    .max(16, "Şifre en fazla 16 karakter olmalıdır")
+    .matches(/\d+/, "Şifre en az bir rakam içermelidir.")
+    .matches(/[a-z]+/, "Şifre en az bir küçük harf içermelidir.")
+    .matches(/[A-Z]+/, "Şifre en az bir büyük harf içermelidir.")
+    .matches(
+      /[@$!%*?&]+/,
+      "Şifre en az bir özel karakter(@$!%*?&) içermelidir."
+    ),
+    email: string()
+      .email("Geçerli bir email giriniz")
+      .required("Email zorunludur"),
+
+  })
 
   return (
     <Container maxWidth="lg">
@@ -51,10 +74,21 @@ const Register = () => {
             Register
           </Typography>
 
-          <Box
-            component="form"
-            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-          >
+            {/* //fromik kullanimi */}
+
+            <Formik
+             initialValues={{ username: "", first_name: "", last_name: "", email: "", password: ""} }
+             validationSchema={registerSchema}
+             onSubmit={(values,action) => {
+              action.resetForm()
+              action.setSubmitting(false)
+               console.log(values)
+               navigate("/login")
+             }}
+
+            ></Formik>
+
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
             <TextField
               label="User Name"
               name="username"
