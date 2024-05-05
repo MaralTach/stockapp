@@ -11,6 +11,7 @@ import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import TextField from "@mui/material/TextField";
 import useApiRequest from "../services/useApiRequest"
+// import * as Yup from 'yup';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -18,9 +19,9 @@ const Register = () => {
   const { register } = useApiRequest()
 
   const registerSchema = object({
-    username: string().required("Bu alan zorunludur"),
-    first_name: string().required("Bu alan zorunludur"),
-    last_name: string().required("Bu alan zorunludur"),
+    userName: string().required("Bu alan zorunludur"),
+    firstName: string().required("Bu alan zorunludur"),
+    lastName: string().required("Bu alan zorunludur"),
     email: string()
     .email("Geçerli bir email giriniz")
     .required("Email zorunludur"),
@@ -80,55 +81,60 @@ const Register = () => {
 
           <Formik
             initialValues={{
-              username: "",
-              first_name: "",
-              last_name: "",
+              userName: "",
+              firstName: "",
+              lastName: "",
               email: "",
               password: "",
             }}
             validationSchema={registerSchema}
             onSubmit={(values, action) => {
-              if (values.email && values.password) {
+             
+              //? post 
                 register(values);
+
+                //? formu resetleme
                 action.resetForm();
                 action.setSubmitting(false);
                 console.log(values);
                 navigate("/login");
-              }
+              
             }}
           >
             {(values, handleChange,handleBlur,touched,errors, isSubmitting) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
-                    label="User Name"
-                    name="username"
+                    label="userName"
+                    name="userName"
                     id="userName"
                     type="text"
                     variant="outlined"
-                    value={values.username}
+                    value={values.userName}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    // error={touched.username && Boolean(errors.username)}
-                    // helperText={touched.username && errors.username ? "bu alan zorunludur" : ""}
+                    // error={touched.userName && Boolean(errors.userName)}
+                    // helperText={touched.userName && errors.userName ? "bu alan zorunludur" : ""}
                   />
                   <TextField
-                    label="First Name"
-                    name="first_name"
+                    label="firstName"
+                    name="firstName"
                     id="firstName"
                     type="text"
                     variant="outlined"
-                    value={values.first_name}
+                    value={values.firstName}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    // error={touched.firstName && Boolean(errors.firstName)}
+                    // helperText={touched.firstName && errors.firstName ? "bu alan zorunludur" : ""}
                   />
                   <TextField
-                    label="Last Name"
-                    name="last_name"
+                    label="lastName"
+                    name="lastName"
                     id="last_name"
                     type="text"
                     variant="outlined"
-                    value={values.last_name}
+                    value={values.lastName}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -141,8 +147,8 @@ const Register = () => {
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email}
+                   // error={touched.email && Boolean(errors.email)}
+                    //helperText={touched.email && errors.email}
                   />
                   <TextField
                     label="password"
