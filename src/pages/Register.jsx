@@ -101,7 +101,7 @@ const Register = () => {
               
             }}
           >
-            {(values, handleChange,handleBlur,touched,errors, isSubmitting) => (
+            {({values, handleChange,handleBlur,touched,errors, isSubmitting}) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
@@ -113,8 +113,8 @@ const Register = () => {
                     value={values.userName}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    // error={touched.userName && Boolean(errors.userName)}
-                    // helperText={touched.userName && errors.userName ? "bu alan zorunludur" : ""}
+                    error={touched.userName && Boolean(errors.userName)}
+                    helperText={touched.userName && errors.userName }
                   />
                   <TextField
                     label="firstName"
@@ -125,8 +125,8 @@ const Register = () => {
                     value={values.firstName}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    // error={touched.firstName && Boolean(errors.firstName)}
-                    // helperText={touched.firstName && errors.firstName ? "bu alan zorunludur" : ""}
+                    error={touched.firstName && Boolean(errors.firstName)}
+                    helperText={touched.firstName && errors.firstName}
                   />
                   <TextField
                     label="lastName"
@@ -137,6 +137,8 @@ const Register = () => {
                     value={values.lastName}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    error={touched.lastName && Boolean(errors.lastName)}
+                    helperText={touched.lastName && errors.lastName}
                   />
                  <TextField
                     label="Email"
@@ -147,8 +149,8 @@ const Register = () => {
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                   // error={touched.email && Boolean(errors.email)}
-                    //helperText={touched.email && errors.email}
+                   error={touched.email && Boolean(errors.email)}
+                    helperText={touched.email && errors.email}
                   />
                   <TextField
                     label="password"
@@ -159,8 +161,8 @@ const Register = () => {
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    // error={touched.password && Boolean(errors.password)}
-                    // helperText={touched.password && errors.password}
+                    error={touched.password && Boolean(errors.password)}
+                    helperText={touched.password && errors.password}
                   />
                    <Button
                     variant="contained"
