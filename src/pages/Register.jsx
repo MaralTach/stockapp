@@ -19,7 +19,7 @@ const Register = () => {
   const { register } = useApiRequest()
 
   const registerSchema = object({
-    userName: string().required("Bu alan zorunludur"),
+    username: string().required("Bu alan zorunludur"),
     firstName: string().required("Bu alan zorunludur"),
     lastName: string().required("Bu alan zorunludur"),
     email: string()
@@ -81,7 +81,7 @@ const Register = () => {
 
           <Formik
             initialValues={{
-              userName: "",
+              username: "",
               firstName: "",
               lastName: "",
               email: "",
@@ -100,21 +100,22 @@ const Register = () => {
                 navigate("/login");
               
             }}
+            // component = {(props) => <Register {...props} />}
           >
             {({values, handleChange,handleBlur,touched,errors, isSubmitting}) => (
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
-                    label="userName"
-                    name="userName"
+                    label="User Name"
+                    name="username"
                     id="userName"
                     type="text"
                     variant="outlined"
-                    value={values.userName}
+                    value={values.username}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    error={touched.userName && Boolean(errors.userName)}
-                    helperText={touched.userName && errors.userName }
+                    error={touched.username && Boolean(errors.username)}
+                    helperText={touched.username && errors.username }
                   />
                   <TextField
                     label="firstName"

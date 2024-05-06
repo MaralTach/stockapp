@@ -1,11 +1,12 @@
 import axios from "axios"
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
 import { fetchFail, fetchStart, logOutSuccess, loginSuccess,registerSuccess } from "../features/authSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 
 const useApiRequest = () => {
+  const {token} = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -49,10 +50,14 @@ const useApiRequest = () => {
     dispatch(fetchStart())
 
     try {
-      await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/logout`)
+      await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/logout`,{
+        headers:{
+          Authorization: `Token ${token}`
+        },
+      })
       dispatch(logOutSuccess())
-      toastSuccessNotify("Logout islemi bésarılı")
-      navigate("/")
+      toastSuccessNotify("Logout islemi basarılı")
+      navigate("/register")
 
     } catch (error) {
       dispatch(fetchFail());
