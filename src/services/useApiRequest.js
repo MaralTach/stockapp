@@ -42,7 +42,7 @@ const useApiRequest = () => {
       } catch (error) {
         console.log(error)
         dispatch(fetchFail())
-        toastErrorNotify("Register islemi basarısız oldu")
+        toastErrorNotify("Registration failed")
       }
    
   }
@@ -56,13 +56,12 @@ const useApiRequest = () => {
         },
       })
       dispatch(logOutSuccess())
-      toastSuccessNotify("Logout islemi basarılı")
+      // toastSuccessNotify("Logout islemi basarılı")
       navigate("/register")
 
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify("Logout islemi bésarısız oldu")
-      console.log(error)
+  
     }
   }
 

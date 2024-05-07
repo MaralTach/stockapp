@@ -59,11 +59,12 @@ const MenuListComp = () => {
                " &: hover": {
                 color: "#f05053",
                 transition: "all 0.3s ease",
-
+                
                },
                 color: "#fff",
                 "& .MuiSvgIcon-root":{
-                    color: "#fff"
+                    color: "#fff",
+                
                 }
                
             }}
