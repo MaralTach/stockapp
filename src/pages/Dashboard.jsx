@@ -52,22 +52,30 @@ function Dashboard(props) {
     window !== undefined ? () => window().document.body : undefined
 
   return (
-    <Box sx={{ display: "flex"}}>
+    <Box sx={{ display: "flex",
+    }}>
       <CssBaseline />
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+         
         }}
       >
-        <Toolbar>
+        <Toolbar sx={{
+           "&.MuiToolbar-root": {
+            backgroundColor:"rebeccapurple"
+          }
+        }} >
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
+            sx={{ mr: 2, display: { sm: "none" },
+          
+          }}
           >
             <MenuIcon />
           </IconButton>
@@ -83,7 +91,8 @@ function Dashboard(props) {
       </AppBar>
       <Box
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 },   
+      }}
         aria-label="mailbox folders"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
@@ -101,9 +110,14 @@ function Dashboard(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "purple",
+              backgroundColor: "blueviolet",
               color:"white"
             },
+            "& .MuiSvgIcon-root":{
+              color: "white",
+             
+          
+          }
           }}
         >
           {drawer}
@@ -115,7 +129,7 @@ function Dashboard(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "purple",
+              backgroundColor: "blueviolet",
             },
           }}
           open
