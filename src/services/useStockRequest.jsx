@@ -1,9 +1,7 @@
-
-
-import React from 'react'
-import useAxios from './useAxios'
+import useAxios from '../services/useAxios'
 import { useDispatch } from 'react-redux'
 import { fetchStart, firmSuccess, fetchFail } from '../features/firmsSlice'
+import { useEffect } from 'react'
 
 const useStockRequest = () => {
 
