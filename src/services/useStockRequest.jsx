@@ -1,27 +1,52 @@
-import useAxios from '../services/useAxios'
-import { useDispatch } from 'react-redux'
-import { fetchStart, firmSuccess, fetchFail } from '../features/firmsSlice'
-import { useEffect } from 'react'
+import useAxios from "../services/useAxios";
+import { useDispatch } from "react-redux";
+import { fetchStart, fetchFail, getFirmsSuccess, getSalesSuccess } from "../features/stockSlice";
+import { useEffect } from "react";
 
 const useStockRequest = () => {
+  const { axiosToken } = useAxios();
+  const dispatch = useDispatch();
 
-    const {axiosToken} = useAxios()
-    const dispatch = useDispatch()
+  const getFirms = async () => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosToken("/firms");
 
-    const getFirms = async ()=> {
-        dispatch(fetchStart())  
-        try {
-            const data = await axiosToken("/firms")
-            console.log(data)
-        dispatch(firmSuccess(data))
-            
-        } catch (error) {
-            console.log(error)
-         dispatch(fetchFail())
-            
-        }
+      dispatch(getFirmsSuccess(data.data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
     }
-  return {getFirms}
-}
+  };
 
-export default useStockRequest
+
+  const getSales = async () => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosToken("/sales");
+
+      dispatch(getSalesSuccess(data.data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+    }
+  };
+
+
+
+  const getStock = async (path) => {
+    dispatch(fetchStart());
+    try {
+      const { data } = await axiosToken(`/${path}`);
+      dispatch(getFirmsSuccess(data.data));
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  }
+
+
+  return { getFirms, getSales,getStock };
+};
+
+export default useStockRequest;
