@@ -57,11 +57,14 @@ const MenuListComp = () => {
             onClick={() => navigate(item.path)}
             sx={{
               color: "#fff",
+              borderRadius: "20px 0 0 20px",
+              
               "& .MuiSvgIcon-root":{color: "#fff"},
                " &: hover": {
-                backgroundColor:"orchid",
+                backgroundColor:"ghostwhite",
+                borderRadius: "20px 0 0 20px",
                 color: "black",
-                transition: "all 0.3s ease",
+                transition: "all 0.5s ease",
                 cursor: "pointer",
                 "& .MuiSvgIcon-root":{color: "black",}
                },

@@ -1,36 +1,36 @@
 import useAxios from "../services/useAxios";
 import { useDispatch } from "react-redux";
-import { fetchStart, fetchFail, getFirmsSuccess, getSalesSuccess } from "../features/stockSlice";
+import { fetchStart, fetchFail, getFirmsSuccess, getSalesSuccess, getStockSuccess } from "../features/stockSlice";
 import { useEffect } from "react";
 
 const useStockRequest = () => {
   const { axiosToken } = useAxios();
   const dispatch = useDispatch();
 
-  const getFirms = async () => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axiosToken("/firms");
+  // const getFirms = async () => {
+  //   dispatch(fetchStart());
+  //   try {
+  //     const { data } = await axiosToken("/firms");
 
-      dispatch(getFirmsSuccess(data.data));
-    } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
-    }
-  };
+  //     dispatch(getFirmsSuccess(data.data));
+  //   } catch (error) {
+  //     console.log(error);
+  //     dispatch(fetchFail());
+  //   }
+  // };
 
 
-  const getSales = async () => {
-    dispatch(fetchStart());
-    try {
-      const { data } = await axiosToken("/sales");
+  // const getSales = async () => {
+  //   dispatch(fetchStart());
+  //   try {
+  //     const { data } = await axiosToken("/sales");
 
-      dispatch(getSalesSuccess(data.data));
-    } catch (error) {
-      console.log(error);
-      dispatch(fetchFail());
-    }
-  };
+  //     dispatch(getSalesSuccess(data.data));
+  //   } catch (error) {
+  //     console.log(error);
+  //     dispatch(fetchFail());
+  //   }
+  // };
 
 
 
@@ -38,7 +38,8 @@ const useStockRequest = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosToken(`/${path}`);
-      dispatch(getFirmsSuccess(data.data));
+      const stockData = data.data
+      dispatch(getStockSuccess({stockData, path}));
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -46,7 +47,8 @@ const useStockRequest = () => {
   }
 
 
-  return { getFirms, getSales,getStock };
+  // return { getFirms, getSales,getStock };
+  return { getStock };
 };
 
 export default useStockRequest;
