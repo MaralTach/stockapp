@@ -7,14 +7,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-
+import { btnStyle } from "../styles/globalStyles"
+import useStockRequest from "../services/useStockRequest";
 export default function FirmCard({ firm }) {
 
-const btnStyle = {
-    "&:hover": {
-        color:"red", cursor: "pointer",
-    },
-}
+  const { deleteStock } = useStockRequest();  
   const { address, _id, image, name, phone } = firm;
   return (
     <Card
@@ -28,6 +25,7 @@ const btnStyle = {
         height: "400px",
         p: 2,
         borderRadius: "10px",
+        boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
       }}
     >
       <CardMedia component="img" alt={name} height="140" image={image} sx={{ objectFit: "contain" }} />
@@ -43,7 +41,7 @@ const btnStyle = {
         </Typography>
       </CardContent>
       <CardActions>
-        <DeleteOutlineIcon sx={btnStyle} />
+        <DeleteOutlineIcon sx={btnStyle} onClick = {()=> deleteStock("firms", _id)} />
         <EditIcon  sx={btnStyle}/>
       </CardActions>
     </Card>
