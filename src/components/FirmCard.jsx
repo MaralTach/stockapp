@@ -7,11 +7,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
-import { btnStyle } from "../styles/globalStyles"
+import { btnStyle } from "../styles/globalStyles";
 import useStockRequest from "../services/useStockRequest";
-export default function FirmCard({ firm }) {
-
-  const { deleteStock } = useStockRequest();  
+export default function FirmCard({ firm, handleOpen, setInfo }) {
+  const { deleteStock } = useStockRequest();
   const { address, _id, image, name, phone } = firm;
   return (
     <Card
@@ -28,7 +27,13 @@ export default function FirmCard({ firm }) {
         boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <CardMedia component="img" alt={name} height="140" image={image} sx={{ objectFit: "contain" }} />
+      <CardMedia
+        component="img"
+        alt={name}
+        height="140"
+        image={image}
+        sx={{ objectFit: "contain" }}
+      />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
@@ -36,13 +41,22 @@ export default function FirmCard({ firm }) {
         <Typography variant="body2" color="text.secondary">
           {address}
         </Typography>
-        <Typography variant="body2" color="text.secondary" mt={2} >
+        <Typography variant="body2" color="text.secondary" mt={2}>
           {phone}
         </Typography>
       </CardContent>
       <CardActions>
-        <DeleteOutlineIcon sx={btnStyle} onClick = {()=> deleteStock("firms", _id)} />
-        <EditIcon  sx={btnStyle}/>
+        <DeleteOutlineIcon
+          sx={btnStyle}
+          onClick={() => deleteStock("firms", _id)}
+        />
+        <EditIcon
+          sx={btnStyle}
+          onClick={() => {
+            handleOpen();
+            setInfo(firm);
+          }}
+        />
       </CardActions>
     </Card>
   );

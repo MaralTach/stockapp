@@ -19,22 +19,8 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({ open, handleClose, info, setInfo }) {
-    // const [info, setInfo] = React.useState({
-    //     name:"",
-    //     phone:"",
-    //     address:"",
-    //     image:""
+export default function ProductModal({ open, handleClose, info, setInfo }) {
 
-    // })
-// useEffect(()=>{
-//     setInfo({
-//         name:"",
-//         phone:"",
-//         address:"",
-//         image:""
-//     })
-// }, [open])
     const {postStock,putStock} = useStockRequest()
     const handleChange = (e) => {
         setInfo({...info, [e.target.name]: e.target.value})
@@ -57,7 +43,11 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
         //     address:"",
         //     image:""
         // })
-          handleClose()
+
+
+
+
+        handleClose()
 
      }
 
@@ -108,19 +98,9 @@ export default function FirmModal({ open, handleClose, info, setInfo }) {
               onChange={handleChange}
               required
             />
-            <TextField
-              label="Image Url"
-              name="image"
-              id="image"
-              type="url"
-              variant="outlined"
-              value={info.image}
-              onChange={handleChange}
-              required
-            />
 
             <Button variant="contained" type="submit" sx={{backgroundColor:"blueviolet", color:"white"}} >
-             {info._id ? "UPDATE FIRM" : "ADD FIRM"}  
+             {info._id ? "UPDATE Product" : "ADD Product"}  
             </Button>
           </Box>
         </Box>
