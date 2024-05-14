@@ -23,8 +23,10 @@ export default function FirmCard({ firm, handleOpen, setInfo }) {
         width: "300px",
         height: "400px",
         p: 2,
-        borderRadius: "10px",
-        boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+        border: "1px solid #ccc",
+        boxShadow: "0 0px 10px grey",
+        borderRadius: "5px",
+       
       }}
     >
       <CardMedia

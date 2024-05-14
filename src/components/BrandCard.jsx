@@ -21,6 +21,9 @@ const BrandCard = ({ brand, handleOpen, setInfo }) => {
         display: "flex",
         alignItems: "center",
         flexDirection: "column",
+
+
+
       }}
     >
       <CardHeader title={brand?.name} />

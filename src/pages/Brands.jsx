@@ -28,7 +28,8 @@ const Brands = () => {
         Brands
       </Typography>
 
-      <Button variant="contained" onClick={handleOpen} sx={{backgroundColor:"blueviolet", color:"white"}}>
+      <Button variant="contained" onClick={handleOpen} sx={{backgroundColor:"blueviolet", 
+      color:"white"}}>
         New Brand
       </Button>
 
