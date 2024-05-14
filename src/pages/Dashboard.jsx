@@ -13,6 +13,8 @@ import { useSelector } from "react-redux"
 import useApiRequest from "../services/useApiRequest"
 import MenuListComp from "../components/MenuListComp"
 import { Outlet } from "react-router-dom"
+import dashboardImage from "../assets/dashboard.png"
+
 
 const drawerWidth = 200
 
@@ -44,6 +46,7 @@ function Dashboard(props) {
       <Toolbar />
       <Divider />
       <MenuListComp />
+      
     </div>
   )
 
@@ -55,11 +58,14 @@ function Dashboard(props) {
     <Box sx={{ display: "flex",
     }}>
       <CssBaseline />
+
       <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
+          ml: { sm: `${drawerWidth}px`
+        
+        },
          
         }}
       >
@@ -111,15 +117,15 @@ function Dashboard(props) {
               boxSizing: "border-box",
               width: drawerWidth,
               backgroundColor: "blueviolet",
-              color:"white"
+              color:"white",
             },
             "& .MuiSvgIcon-root":{
               color: "white",
-             
-          
-          }
+          },
+         
           }}
         >
+           
           {drawer}
         </Drawer>
         <Drawer
@@ -134,6 +140,7 @@ function Dashboard(props) {
           }}
           open
         >
+         
           {drawer}
         </Drawer>
       </Box>
@@ -143,6 +150,7 @@ function Dashboard(props) {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          
         }}
       >
         <Toolbar />

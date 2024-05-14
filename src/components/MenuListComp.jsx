@@ -10,9 +10,12 @@ import StoreIcon from "@mui/icons-material/Store"
 import StarsIcon from "@mui/icons-material/Stars"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import { useNavigate } from "react-router-dom"
+import dashboardImage from "../assets/dashboard.png"
+import {backImage} from "../styles/globalStyles"
 
 const MenuListComp = () => {
   const navigate = useNavigate()
+
 
   const icons = [
     {
@@ -49,7 +52,7 @@ const MenuListComp = () => {
 
   return (
     <div>
-      <List >
+      <List  >
         {icons.map((item, index) => (
           <ListItem
             key={index}
@@ -58,6 +61,7 @@ const MenuListComp = () => {
             sx={{
               color: "#fff",
               borderRadius: "20px 0 0 20px",
+              
               
               "& .MuiSvgIcon-root":{color: "#fff"},
                " &: hover": {
@@ -70,6 +74,7 @@ const MenuListComp = () => {
                },
             }}
           >
+           
             <ListItemButton>
               <ListItemIcon>{item.iconName}</ListItemIcon>
               <ListItemText primary={item.title} />
@@ -77,6 +82,7 @@ const MenuListComp = () => {
           </ListItem>
         ))}
       </List>
+      <img src={dashboardImage} alt="dashboard" style={backImage} />
     </div>
   )
 }

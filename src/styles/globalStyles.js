@@ -16,3 +16,12 @@ export const modalStyle = {
     p: 4,
   }
   
+ export const backImage = {
+     backgroundPosition: "center",
+     position: "absolute",
+     bottom:50,
+     left: 10,
+     height: "150px",
+     with: "auto",
+ } 
+ 
