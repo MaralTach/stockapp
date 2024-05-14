@@ -21,4 +21,4 @@ npm install or yarn
 
 ## Live Example of the Application:
 
-https://stockapp-dxn7.vercel.app/
+https://stockapp-phi.vercel.app/
