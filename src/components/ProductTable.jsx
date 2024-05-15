@@ -24,7 +24,7 @@ export default function ProductTable() {
 const getRowId = (row) => row._id
 
   const columns = [
-    { field: "_id", headerName: "#", width: 100, flex: 1,  },
+    { field: "_id", headerName: "#", width: 100, flex: 1, },
     {
       field: "categories",
       headerName: "Categories",
@@ -72,7 +72,7 @@ const getRowId = (row) => row._id
   ];
   return (
     <Box sx={{ height: 400, width: "100%", maxWidth: 1200,  
-    borderRadius: "10px", boxShadow: "0px 0px 10px black",  
+    borderRadius: "10px", boxShadow: "0px 0px 10px black", 
       }}>
       <DataGrid 
       rows={products}
