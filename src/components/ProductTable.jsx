@@ -24,7 +24,7 @@ export default function ProductTable() {
 const getRowId = (row) => row._id
 
   const columns = [
-    { field: "_id", headerName: "#", width: 90 },
+    { field: "_id", headerName: "#", width: 100, flex: 1,  },
     {
       field: "categories",
       headerName: "Categories",
@@ -65,17 +65,17 @@ const getRowId = (row) => row._id
           icon={<DeleteForeverIcon />}
           onClick={() => deleteStock("products", props.id)}
           label="Delete"
+          color="error"
         />,
       ],
     },
   ];
   return (
-    <Box sx={{ height: 400, width: "100%", maxWidth: 1200, m:"auto ", 
-    display: "flex", justifyContent: "space-between", 
-    gap: 2, alignItems: "center", 
-    textAlign: "center", p: 2, boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)" }}>
-      <DataGrid
-        rows={products}
+    <Box sx={{ height: 400, width: "100%", maxWidth: 1200,  
+    borderRadius: "10px", boxShadow: "0px 0px 10px black",  
+      }}>
+      <DataGrid 
+      rows={products}
         columns={columns}
         initialState={{
           pagination: {
