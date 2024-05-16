@@ -30,6 +30,8 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
        headerName: "Date",
        flex: 1,
        minWidth: 100,
+       sortable: true,
+       editable: true,
        valueGetter: (value, row) => row.productId?.createdAt,
      },
      {
@@ -40,6 +42,7 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
        width: 150,
        flex: 1.2,
        editable: true,
+       sortable: true,
        valueGetter: (value, row) => row.firmId?.name,
      },
      {
@@ -50,6 +53,7 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
        flex: 1.1,
        miWidth: 110,
        editable: true,
+       sortable: true,
        valueGetter: (value, row) => row.brandId?.name,
      },
      {
@@ -59,6 +63,7 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
        headerAlign: "center",
        align: "center",
        width: 160,
+       editable: true,
        valueGetter: (value, row) => row.productId?.name,
      },
 
@@ -66,11 +71,12 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
       field: "price",
       headerName: "Price",
       sortable: true,
+      editable: true,
       headerAlign: "center",
       align: "center",
       width: 160,
       valueGetter: (value, row) => row.price,
-    },
+    },  
 
     {
       field: "amount",
@@ -120,7 +126,7 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
               },
             },
           }}
-          pageSizeOptions={[5]}
+          pageSizeOptions={[5,10,15,20]}
           checkboxSelection
           disableRowSelectionOnClick
           getRowId={getRowId}

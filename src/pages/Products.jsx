@@ -13,28 +13,22 @@ const Products = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
 
-  const [info, setInfo] = useState({
-    name: "",
-    phone: "",
-    address: "",
-    image: "",
-  });
+  const initialState = {categoryId: "", brandId:"", name:""}
+
+  const [info, setInfo] = useState(initialState);
   const handleClose = () => {
     setOpen(false);
-    setInfo({
-      name: "",
-      phone: "",
-      address: "",
-      image: "",
-    });
+    setInfo(initialState);
   };
 
   const { getStock } = useStockRequest();
 
-  const { firms } = useSelector((state) => state.stock);
+  const { products } = useSelector((state) => state.stock);
 
   useEffect(() => {
     getStock("products");
+    getStock("categories");
+    getStock("brands");
   }, []);
 
   return (

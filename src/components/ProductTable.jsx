@@ -24,19 +24,26 @@ export default function ProductTable() {
 const getRowId = (row) => row._id
 
   const columns = [
-    { field: "_id", headerName: "#", width: 100, flex: 1, },
+    { field: "_id", headerName: "#", width: 100, flex: 1,     headerAlign: "center",
+    align: "center", },
     {
       field: "categories",
       headerName: "Categories",
       width: 150,
-      editable: true,
+      sortable: true,
+      headerAlign: "center",
+      align: "center",
+      // editable: true,
       valueGetter: (value, row) => row.categoryId?.name,
     },
     {
       field: "brandId",
       headerName: "Brands",
       width: 150,
-      editable: true,
+      sortable: true,
+      headerAlign: "center",
+      align: "center",
+      // editable: true,
       valueGetter: (value, row) => row.brandId?.name,
     },
     {
@@ -44,15 +51,21 @@ const getRowId = (row) => row._id
       headerName: "Name",
       type: "number",
       width: 110,
-      editable: true,
+      headerAlign: "center",
+      align: "center",
+      // editable: true,
+      sortable: true,
     },
 
     {
-      field: "stock",
+      field: "quantity",
       headerName: "Stock",
       type: "number",
       width: 110,
-      editable: true,
+      sortable: true,
+      headerAlign: "center",
+      align: "center",
+      // editable: true,
       valueGetter: (value, row) => row.quantity,
     },
 
@@ -60,6 +73,8 @@ const getRowId = (row) => row._id
       field: "actions",
       type: "actions",
       headerName: "Operations",
+      headerAlign: "center",
+      align: "center",
       getActions: (props) => [
         <GridActionsCellItem
           icon={<DeleteForeverIcon />}
@@ -84,10 +99,11 @@ const getRowId = (row) => row._id
             },
           },
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[5,10,25,50]}
         checkboxSelection
         disableRowSelectionOnClick
         getRowId={getRowId}
+        slots={{toolbar: GridToolbar}}
       />
     </Box>
   );

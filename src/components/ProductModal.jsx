@@ -1,12 +1,15 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
 import useStockRequest from "../services/useStockRequest";
-import { useEffect } from "react";
-import {modalStyle} from "../styles/globalStyles"
+import { modalStyle } from "../styles/globalStyles";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { useSelector } from "react-redux";
 
 // const style = {
 //   position: "absolute",
@@ -21,36 +24,22 @@ import {modalStyle} from "../styles/globalStyles"
 // };
 
 export default function ProductModal({ open, handleClose, info, setInfo }) {
+  const { postStock } = useStockRequest();
 
-    const {postStock,putStock} = useStockRequest()
-    const handleChange = (e) => {
-        setInfo({...info, [e.target.name]: e.target.value})
-    }
-   
-     const handleSubmit = (e) => {
-        e.preventDefault()
+  const {categories,brands} = useSelector((state) => state.stock)
 
-       if (info._id) {
-        putStock("firms", info)
-       } else {
-        
-         postStock("firms", info)
-       }
+  const handleChange = (e) => {
+    setInfo({ ...info, [e.target.name]: e.target.value });
+  };
 
  
-        // setInfo({
-        //     name:"",
-        //     phone:"",
-        //     address:"",
-        //     image:""
-        // })
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    postStock("products", info);
 
-
-
-        handleClose()
-
-     }
+    handleClose();
+  };
 
   return (
     <div>
@@ -68,8 +57,46 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
             component={"form"}
             onSubmit={handleSubmit}
           >
+            <FormControl fullWidth>
+              <InputLabel id="categoryId">Categories</InputLabel>
+              <Select
+                labelId="categoryId"
+                id="categoryId"
+                name="categoryId"
+                value={info.categoryId}
+                label="Categories"
+                onChange={handleChange}
+                required
+              >
+                {categories.map((item)=>(
+                      <MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
+                ) )}
+               
+              </Select>
+            </FormControl>
+
+            <FormControl fullWidth>
+              <InputLabel id="categoryId">Brands</InputLabel>
+              <Select
+                labelId="brandId"
+                id="brandId"
+                name="brandId"
+                value={info.brandId}
+                label="Brands"
+                onChange={handleChange}
+                required
+              >
+                {brands.map((item)=>(
+                      <MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
+                ) )}
+               
+              </Select>
+            </FormControl>
+
+              
+
             <TextField
-              label="Firm Name"
+              label="name"
               name="name"
               id="name"
               type="text"
@@ -79,29 +106,12 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
               required
             />
 
-            <TextField
-              label="Phone Number"
-              name="phone"
-              id="phone"
-              type="tel"
-              variant="outlined"
-              value={info.phone}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              label="Address"
-              name="address"
-              id="address"
-              type="text"
-              variant="outlined"
-              value={info.address}
-              onChange={handleChange}
-              required
-            />
-
-            <Button variant="contained" type="submit" sx={{backgroundColor:"blueviolet", color:"white"}} >
-             {info._id ? "UPDATE Product" : "ADD Product"}  
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{ backgroundColor: "blueviolet", color: "white" }}
+            >
+              ADD Product
             </Button>
           </Box>
         </Box>

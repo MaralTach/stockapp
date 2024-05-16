@@ -80,11 +80,12 @@ const useStockRequest = () => {
     dispatch(fetchStart());
     try {
       await axiosToken.put(`/${path}/${info._id}`, info);
-
       getStock(path);
+      toastSuccessNotify(`${path} updated successfully`);
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
+      toastErrorNotify(`${path} updating failed`);
     }
   };
 
