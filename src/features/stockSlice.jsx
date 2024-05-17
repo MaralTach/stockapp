@@ -40,6 +40,9 @@ const stockSlice = createSlice({
     state.loading = false
     state[path] = stockData
   },
+  getProPurBraFirmSuccess:(state )=>{
+
+  },
   fetchFail: (state) => {
     state.loading = false
     state.error = true

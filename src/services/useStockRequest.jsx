@@ -46,6 +46,7 @@ const useStockRequest = () => {
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
+      toastErrorNotify(`${path} fetching failed`);
     }
   };
   const deleteStock = async (path = "firms", id) => {
@@ -89,8 +90,26 @@ const useStockRequest = () => {
     }
   };
 
+
+  const getProPurBraFirmStock = async () => {
+    dispatch(fetchStart());
+    try {
+     const [products,purchases,brands,firms] = await Promise.all([
+      await axiosToken("/products"),
+      await axiosToken("/purchases"),
+      await axiosToken("/brands"),
+      await axiosToken("/firms"),
+
+     ])
+     console.log(products,firms)
+    } catch (error) {
+      
+    }
+  };
+
+
   // return { getFirms, getSales,getStock };
-  return { getStock, deleteStock, postStock,putStock };
+  return { getStock, deleteStock, postStock,putStock ,getProPurBraFirmStock};
 };
 
 export default useStockRequest;

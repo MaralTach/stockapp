@@ -5,7 +5,7 @@ import PurchasesModal from "../components/PurchasesModal";
 
 const Purchases = () => {
 
-  const { getStock } = useStockRequest()
+  const { getStock,getProPurBraFirmStock } = useStockRequest()
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -29,6 +29,11 @@ const Purchases = () => {
 
   useEffect(() => {
     getStock("purchases")
+    getStock("firms")
+    getStock("products")
+    getStock("brands")
+
+    getProPurBraFirmStock()
   }, [])
 	return (
 	<div>
