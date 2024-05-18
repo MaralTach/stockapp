@@ -13,7 +13,7 @@ import { useSelector } from "react-redux"
 import useApiRequest from "../services/useApiRequest"
 import MenuListComp from "../components/MenuListComp"
 import { Outlet } from "react-router-dom"
-import dashboardImage from "../assets/dashboard.png"
+
 
 
 const drawerWidth = 200
