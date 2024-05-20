@@ -57,7 +57,7 @@ const Purchases = () => {
       </Button>
 
       {error && <ErrorMessage/> }
-      {!error &&  <PurchasesTable/>  }
+      {!error &&  <PurchasesTable handleOpen={handleOpen} setInfo={setInfo}/>  }
 		{/* <PurchasesTable handleOpen={handleOpen} setInfo={setInfo} /> */}
     <PurchasesModal
         handleClose={handleClose}
