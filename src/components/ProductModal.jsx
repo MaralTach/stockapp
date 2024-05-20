@@ -26,13 +26,12 @@ import { useSelector } from "react-redux";
 export default function ProductModal({ open, handleClose, info, setInfo }) {
   const { postStock } = useStockRequest();
 
-  const {categories,brands} = useSelector((state) => state.stock)
+  const { categories, brands } = useSelector((state) => state.stock);
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
 
- 
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -68,10 +67,11 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
                 onChange={handleChange}
                 required
               >
-                {categories.map((item)=>(
-                      <MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
-                ) )}
-               
+                {categories.map((item) => (
+                  <MenuItem key={item._id} value={item._id}>
+                    {item.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
 
@@ -86,14 +86,13 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
                 onChange={handleChange}
                 required
               >
-                {brands.map((item)=>(
-                      <MenuItem key={item._id} value={item._id}>{item.name}</MenuItem>
-                ) )}
-               
+                {brands.map((item) => (
+                  <MenuItem key={item._id} value={item._id}>
+                    {item.name}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
-
-              
 
             <TextField
               label="name"
@@ -109,7 +108,15 @@ export default function ProductModal({ open, handleClose, info, setInfo }) {
             <Button
               variant="contained"
               type="submit"
-              sx={{ backgroundColor: "blueviolet", color: "white" }}
+              sx={{
+                m: 2,
+                backgroundColor: "blueviolet",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "rebeccapurple",
+                  color: "white",
+                },
+              }}
             >
               ADD Product
             </Button>

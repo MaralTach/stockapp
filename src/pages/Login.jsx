@@ -42,6 +42,7 @@ const Login = () => {
         sx={{
           height: "100vh",
           p: 2,
+         
         }}
       >
         <Grid item xs={12} mb={3}>
@@ -50,7 +51,9 @@ const Login = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} sm={10} md={6}>
+        <Grid item xs={12} sm={10} md={6} 
+        
+        >
           <Avatar
             sx={{
               backgroundColor: "secondary.light",

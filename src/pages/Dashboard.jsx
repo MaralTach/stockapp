@@ -13,7 +13,7 @@ import { useSelector } from "react-redux"
 import useApiRequest from "../services/useApiRequest"
 import MenuListComp from "../components/MenuListComp"
 import { Outlet } from "react-router-dom"
-
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const drawerWidth = 200
@@ -71,7 +71,8 @@ function Dashboard(props) {
       >
         <Toolbar sx={{
            "&.MuiToolbar-root": {
-            backgroundColor:"rebeccapurple"
+            backgroundColor:"lavender",
+            color:"black"
           }
         }} >
           <IconButton
@@ -89,8 +90,15 @@ function Dashboard(props) {
             Stock App
           </Typography>
           {user && (
-            <Button color="inherit" onClick={logout}>
+            <Button color="inherit" onClick={logout} sx={{ m: 2,
+             gap: 1,
+              color: "black",
+              "&:hover": {
+                backgroundColor: "mediumpurple",
+                color: "black",
+              },}}>
               Logout
+              <LogoutIcon />
             </Button>
           )}
         </Toolbar>

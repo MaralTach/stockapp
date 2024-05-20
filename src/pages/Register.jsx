@@ -118,7 +118,7 @@ const Register = () => {
                     helperText={touched.username && errors.username }
                   />
                   <TextField
-                    label="firstName"
+                    label="First Name"
                     name="firstName"
                     id="firstName"
                     type="text"
@@ -130,7 +130,7 @@ const Register = () => {
                     helperText={touched.firstName && errors.firstName}
                   />
                   <TextField
-                    label="lastName"
+                    label="Last Name"
                     name="lastName"
                     id="last_name"
                     type="text"
@@ -154,7 +154,7 @@ const Register = () => {
                     helperText={touched.email && errors.email}
                   />
                   <TextField
-                    label="password"
+                    label="Password"
                     name="password"
                     id="password"
                     type="password"

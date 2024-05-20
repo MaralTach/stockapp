@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.custom-chart {
+    background-color: #f5f5f5; /* Genel arka plan rengi */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Genel kutu gölgesi */
+    border-radius: 8px; /* Köşeleri yuvarlama */
+    padding: 10px; /* İçerik dolgu alanı */
+  }
+  
+  .sales-chart {
+    background-color: #e0f7fa; /* Satış grafiği için özel arka plan rengi */
+    box-shadow: 0 4px 12px rgba(0, 0, 255, 0.2); /* Satış grafiği için özel kutu gölgesi */
+  }
+  
+  .purchases-chart {
+    background-color: #ffebee; /* Alım grafiği için özel arka plan rengi */
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2); /* Alım grafiği için özel kutu gölgesi */
+  }
+  
+  /* Line chart paths */
+  .sales-chart path.recharts-area-area,
+  .sales-chart path.recharts-area-curve,
+  .purchases-chart path.recharts-area-area,
+  .purchases-chart path.recharts-area-curve {
+    stroke-width: 2;
+    filter: drop-shadow(10px 10px 3px rgba(0, 0, 0, 0.2)); /* Çizgilere 3D gölge efekti */
+  }

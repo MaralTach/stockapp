@@ -1,35 +1,35 @@
-import Box from "@mui/material/Box"
-import Modal from "@mui/material/Modal"
-import { modalStyle } from "../styles/globalStyles"
-import TextField from "@mui/material/TextField"
-import { Button } from "@mui/material"
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import { modalStyle } from "../styles/globalStyles";
+import TextField from "@mui/material/TextField";
+import { Button } from "@mui/material";
 
-import { MenuItem, Select, InputLabel, FormControl } from "@mui/material"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import useStockRequest from "../services/useStockRequest"
+import { MenuItem, Select, InputLabel, FormControl } from "@mui/material";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import useStockRequest from "../services/useStockRequest";
 
 export default function SaleModal({ open, handleClose, info, setInfo }) {
-  const navigate = useNavigate()
-  const { postStock, putStock } = useStockRequest()
-  const { products, brands } = useSelector((state) => state.stock)
+  const navigate = useNavigate();
+  const { postStock, putStock } = useStockRequest();
+  const { products, brands } = useSelector((state) => state.stock);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setInfo({ ...info, [name]: value })
-  }
+    const { name, value } = e.target;
+    setInfo({ ...info, [name]: value });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (info._id) {
-      putStock("sales", info)
+      putStock("sales", info);
     } else {
-      postStock("sales", info)
+      postStock("sales", info);
     }
 
-    handleClose()
-  }
+    handleClose();
+  };
 
   return (
     <div>
@@ -67,7 +67,7 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
                     <MenuItem key={item._id} value={item._id}>
                       {item.name}
                     </MenuItem>
-                  )
+                  );
                 })}
               </Select>
             </FormControl>
@@ -93,7 +93,7 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
                     <MenuItem key={item._id} value={item._id}>
                       {item.name}
                     </MenuItem>
-                  )
+                  );
                 })}
               </Select>
             </FormControl>
@@ -119,12 +119,25 @@ export default function SaleModal({ open, handleClose, info, setInfo }) {
               onChange={handleChange}
               required
             />
-            <Button type="submit" variant="contained" size="large">
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{
+                m: 2,
+                backgroundColor: "blueviolet",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "rebeccapurple",
+                  color: "white",
+                },
+              }}
+            >
               {info?._id ? "Update Sale" : "Add New Sale"}
             </Button>
           </Box>
         </Box>
       </Modal>
     </div>
-  )
+  );
 }

@@ -58,7 +58,13 @@ export default function BrandModal({ open, handleClose, info, setInfo }) {
             onChange={handleChange}
           />
 
-          <Button type="submit" variant="contained" size="large" sx={{backgroundColor:"blueviolet", color:"white"}}>
+          <Button type="submit" variant="contained" size="large" sx={{ m: 2,
+          backgroundColor: "blueviolet",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "rebeccapurple",
+            color: "white",
+          },}}>
             Save Brand
           </Button>
         </Box>

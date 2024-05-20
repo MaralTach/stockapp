@@ -34,14 +34,14 @@ const Products = () => {
 
   return (
     <div>
-      <Typography
+      {/* <Typography
         variant="h4"
         color={"primary"}
         component="div"
         sx={{ flexGrow: 1 }}
       >
         Products
-      </Typography>
+      </Typography> */}
 
       <Button
         onClick={handleOpen}

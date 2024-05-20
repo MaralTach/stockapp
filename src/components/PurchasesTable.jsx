@@ -9,12 +9,6 @@ import EditIcon from "@mui/icons-material/Edit"
 
 const PurchasesTable = ({ handleOpen, setInfo}) => {
    const { purchases } = useSelector((state) => state.stock)
-   //console.log(purchases)
-
-
-
-
-
    const { deleteStock } = useStockRequest()
  
    const getRowId = (row) => row._id
@@ -26,85 +20,84 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
    const columns = [
     
      {
-       field: "Date",
-       headerName: "Date",
-       flex: 1,
-       minWidth: 100,
-       sortable: true,
-       editable: true,
-       valueGetter: (value, row) => row.productId?.createdAt,
-     },
-     {
-       field: "firmId",
-       headerName: "Firm",
-       headerAlign: "center",
-       align: "center",
-       width: 150,
-       flex: 1.2,
-       editable: true,
-       sortable: true,
-       valueGetter: (value, row) => row.firmId?.name,
-     },
-     {
-       field: "brandId",
-       headerName: "Brand",
-       headerAlign: "center",
-       align: "center",
-       flex: 1.1,
-       miWidth: 110,
-       editable: true,
-       sortable: true,
-       valueGetter: (value, row) => row.brandId?.name,
-     },
-     {
-       field: "productId",
-       headerName: "Product",
-       sortable: true,
-       headerAlign: "center",
-       align: "center",
-       width: 160,
-       editable: true,
-       valueGetter: (value, row) => row.productId?.name,
-     },
-
-     {
-      field: "price",
-      headerName: "Price",
-      sortable: true,
-      editable: true,
+      field: "createdAt",
+      headerName: "Date",
+      minWidth: 150,
       headerAlign: "center",
       align: "center",
-      width: 160,
-      valueGetter: (value, row) => row.price,
-    },  
-
+      renderCell: ({ row }) => {
+        return new Date(row.createdAt).toLocaleString("de-DE")
+      },
+    },
+    {
+      field: "firmId",
+      headerName: "Firm",
+      flex: 1,
+      minWidth: 100,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({ row }) => row?.firmId?.name,
+    },
+    {
+      field: "brandId",
+      headerName: "Brand",
+      flex: 1,
+      minWidth: 100,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({ row }) => row?.brandId?.name,
+    },
+    {
+      field: "productID",
+      headerName: "Product",
+      flex: 1,
+      minWidth: 100,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({ row }) => row?.productId?.name,
+    },
+    {
+      field: "quantity",
+      headerName: "Quantity",
+      minWidth: 50,
+      headerAlign: "center",
+      align: "center",
+    },
+    {
+      field: "price",
+      headerName: "Price",
+      minWidth: 50,
+      headerAlign: "center",
+      align: "center",
+    },
     {
       field: "amount",
       headerName: "Amount",
-      sortable: true,
+      minWidth: 50,
       headerAlign: "center",
       align: "center",
-      width: 160,
-      valueGetter: (value, row) => row.amount,
     },
-
-     {
-       field: "actions",
-       type: "actions",
-       headerName: "Operations",
-       getActions: (props) => {
+    {
+      field: "actions",
+      headerName: "Actions",
+      minWidth: 40,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({
+        row: { brandId, productId, quantity, price, firmId, _id },
+      }) => {
          return [
            <GridActionsCellItem
            icon={<EditIcon />}           
            onClick={() => {
              handleOpen()
-             setInfo(props.row)
+             setInfo({ _id, brandId, productId, quantity, price, firmId})
            }}
            label="Edit"
          />,
          <GridActionsCellItem
          icon={<DeleteOutlineIcon />}
-         onClick={() => deleteStock("purchases", props.id)}
+         onClick={() => deleteStock("purchases", _id)}
          label="Delete"
        />,
          ]
@@ -114,7 +107,8 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
    ]
 
    return (
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{height: 400, width: "100%", maxWidth: 1200 ,borderRadius: "10px", 
+      boxShadow: "0px 0px 10px black" }}>
         <DataGrid
           autoHeight
           rows={purchases}

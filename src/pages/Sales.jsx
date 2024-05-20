@@ -1,38 +1,50 @@
-import { useEffect, useState } from "react"
-import useStockRequest from "../services/useStockRequest"
-import { Button, Container } from "@mui/material"
-import SaleModal from "../components/SaleModal"
-import SaleTable from "../components/SaleTable"
+import { useEffect, useState } from "react";
+import useStockRequest from "../services/useStockRequest";
+import { Button, Container } from "@mui/material";
+import SaleModal from "../components/SaleModal";
+import SaleTable from "../components/SaleTable";
 import TableSkeleton, {
   ErrorMessage,
   NoDataMessage,
-} from "../components/DataFetchMessages"
-import { useSelector } from "react-redux"
+} from "../components/DataFetchMessages";
+import { useSelector } from "react-redux";
 
 const Sales = () => {
-  const { getStock } = useStockRequest()
-  const { sales, loading, error } = useSelector((state) => state.stock)
+  const { getStock } = useStockRequest();
+  const { sales, loading, error } = useSelector((state) => state.stock);
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
-  const initialState = { brandId: "", productId: "", quantity: "", price: "" }
-  const [info, setInfo] = useState(initialState)
+  const initialState = { brandId: "", productId: "", quantity: "", price: "" };
+  const [info, setInfo] = useState(initialState);
 
-  const handleOpen = () => setOpen(true)
+  const handleOpen = () => setOpen(true);
   const handleClose = () => {
-    setOpen(false)
-    setInfo(initialState)
-  }
+    setOpen(false);
+    setInfo(initialState);
+  };
 
   useEffect(() => {
-    getStock("products")
-    getStock("sales")
-    getStock("brands")
-  }, []) // eslint-disable-line
+    getStock("products");
+    getStock("sales");
+    getStock("brands");
+  }, []); // eslint-disable-line
 
   return (
     <Container maxWidth="xl">
-      <Button variant="contained" onClick={handleOpen}>
+      <Button
+        variant="contained"
+        onClick={handleOpen}
+        sx={{
+          m: 2,
+          backgroundColor: "blueviolet",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "rebeccapurple",
+            color: "white",
+          },
+        }}
+      >
         New Sale
       </Button>
 
@@ -50,7 +62,7 @@ const Sales = () => {
         setInfo={setInfo}
       />
     </Container>
-  )
-}
+  );
+};
 
-export default Sales
+export default Sales;

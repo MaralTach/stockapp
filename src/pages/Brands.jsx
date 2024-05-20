@@ -24,12 +24,17 @@ const Brands = () => {
 
   return (
     <Box>
-      <Typography variant="h4" color="error" mb={2}>
+      {/* <Typography variant="h4" color="error" mb={2}>
         Brands
-      </Typography>
+      </Typography> */}
 
-      <Button variant="contained" onClick={handleOpen} sx={{backgroundColor:"blueviolet", 
-      color:"white"}}>
+      <Button variant="contained" onClick={handleOpen} sx={{ m: 2,
+          backgroundColor: "blueviolet",
+          color: "white",
+          "&:hover": {
+            backgroundColor: "rebeccapurple",
+            color: "white",
+          },}}>
         New Brand
       </Button>
 

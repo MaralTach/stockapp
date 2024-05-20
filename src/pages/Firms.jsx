@@ -44,14 +44,7 @@ const Firms = () => {
 
   return (
     <div>
-      <Typography
-        variant="h4"
-        color={"primary"}
-        component="div"
-        sx={{ flexGrow: 1 }}
-      >
-        Firms
-      </Typography>
+ 
 
       <Button
         onClick={handleOpen}
