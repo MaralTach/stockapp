@@ -12,21 +12,23 @@ import { Formik, Form } from "formik"
 import { object, string } from "yup"
 // import { login } from "../services/useApiRequest"
 import useApiRequest from "../services/useApiRequest"
+import bgImage from "../assets/bottom-removebg-preview.png"
+
 
 const Login = () => {
   const { login } = useApiRequest()
 
   const loginSchema = object({
     email: string()
-      .email("Geçerli bir email giriniz")
-      .required("Email zorunludur"),
+      .email("Please enter a valid email")
+      .required("Email is required"),
     password: string()
-      .required("Şifre zorunludur")
-      .min(8, "Şifre en az 8 karakter olmalıdır")
-      .max(16, "Şifre en fazla 16 karakter olmalıdır")
-      .matches(/\d+/, "Şifre en az bir rakam içermelidir.")
-      .matches(/[a-z]+/, "Şifre en az bir küçük harf içermelidir.")
-      .matches(/[A-Z]+/, "Şifre en az bir büyük harf içermelidir.")
+      .required("Password ")
+      .min(8, "Password must be at least 8 characters")
+      .max(16, "Password must be at most 16 characters")
+      .matches(/\d+/, "Password must contain at least one number")
+      .matches(/[a-z]+/, "Password must contain at least one lowercase letter.")
+      .matches(/[A-Z]+/, "Password must contain at least one uppercase letter.")
       .matches(
         /[@$!%*?&]+/,
         "Şifre en az bir özel karakter(@$!%*?&) içermelidir."
@@ -34,7 +36,8 @@ const Login = () => {
   })
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" 
+  >
       <Grid
         container
         justifyContent="center"
@@ -51,9 +54,7 @@ const Login = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} sm={10} md={6} 
-        
-        >
+        <Grid item xs={12} sm={10} md={6}   >
           <Avatar
             sx={{
               backgroundColor: "secondary.light",
@@ -142,6 +143,7 @@ const Login = () => {
         <Grid item xs={10} sm={7} md={6}>
           <Container>
             <img src={image} alt="img" />
+            
           </Container>
         </Grid>
       </Grid>
