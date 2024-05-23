@@ -7,7 +7,7 @@ import useStockRequest from "../services/useStockRequest"
 
 const Brands = () => {
   const { getStock } = useStockRequest()
-  const { brands, loading } = useSelector((state) => state.stock)
+  const { brands, loading,error } = useSelector((state) => state.stock)
 
   const [info, setInfo] = useState({ name: "", image: "" })
 
@@ -64,6 +64,13 @@ const Brands = () => {
           ))}
         </Grid>
       )}
+  <BrandModal
+        open={open}
+        handleClose={handleClose}
+        info={info}
+        setInfo={setInfo}
+      />
+
     </Box>
   )
 }

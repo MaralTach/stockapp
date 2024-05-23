@@ -88,6 +88,7 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
       }) => {
          return [
            <GridActionsCellItem
+           key={"edit"}
            icon={<EditIcon />}           
            onClick={() => {
              handleOpen()
@@ -96,6 +97,7 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
            label="Edit"
          />,
          <GridActionsCellItem
+         key={"delete"}
          icon={<DeleteOutlineIcon />}
          onClick={() => deleteStock("purchases", _id)}
          label="Delete"
@@ -110,21 +112,13 @@ const PurchasesTable = ({ handleOpen, setInfo}) => {
       <Box sx={{height: 400, width: "100%", maxWidth: 1200 ,borderRadius: "10px", 
       boxShadow: "0px 0px 10px black" }}>
         <DataGrid
-          autoHeight
-          rows={purchases}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 5,
-              },
-            },
-          }}
-          pageSizeOptions={[5,10,15,20]}
-          checkboxSelection
-          disableRowSelectionOnClick
-          getRowId={getRowId}
-          slots={{ toolbar: GridToolbar }}
+                 autoHeight
+                 rows={purchases}
+                 columns={columns}
+                 pageSizeOptions={[20, 50, 75, 100]} //? sayfa basina satir sayisi
+                 disableRowSelectionOnClick
+                 slots={{ toolbar: GridToolbar }}
+                 getRowId={getRowId}
         />
       </Box>
     )
