@@ -7,12 +7,14 @@ import image from "../assets/result.svg"
 import { Link } from "react-router-dom"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
-import { Button } from "@mui/material"
+import { Button, IconButton, } from "@mui/material"
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import { blue, red } from "@mui/material/colors"
 import { Formik, Form } from "formik"
 import { object, string } from "yup"
 // import { login } from "../services/useApiRequest"
 import useApiRequest from "../services/useApiRequest"
-import bgImage from "../assets/bottom-removebg-preview.png"
+// import bgImage from "../assets/bottom-removebg-preview.png"
 
 
 const Login = () => {
@@ -34,6 +36,11 @@ const Login = () => {
         "Şifre en az bir özel karakter(@$!%*?&) içermelidir."
       ),
   })
+
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text)
+  }
 
   return (
     <Container maxWidth="lg" 
@@ -141,6 +148,24 @@ const Login = () => {
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>
+
+        <Box sx={{ textAlign: "center", mt: 2 }}>
+            <Typography sx={{ color: blue[500], display: 'inline' }}>
+              Testing email: admin@gmail.com
+            </Typography>
+            <IconButton onClick={() => copyToClipboard('admin@gmail.com')} size="small">
+              <ContentCopyIcon fontSize="small" />
+            </IconButton>
+          </Box>
+          <Box sx={{ textAlign: "center", mt: 2 }}>
+            <Typography sx={{ color: blue[500], display: 'inline' }}>
+              Testing password: Admin*1234
+            </Typography>
+            <IconButton onClick={() => copyToClipboard('Admin*1234')} size="small">
+              <ContentCopyIcon fontSize="small" />
+            </IconButton>
+          </Box>
+
           <Container>
             <img src={image} alt="img" />
             

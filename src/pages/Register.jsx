@@ -96,7 +96,7 @@ const Register = () => {
                 //? formu resetleme
                 action.resetForm();
                 action.setSubmitting(false);
-                console.log(values);
+                // console.log(values);
                 navigate("/login");
               
             }}
