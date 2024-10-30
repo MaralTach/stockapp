@@ -41,7 +41,7 @@ const KPICards = () => {
       // color: deepPurple[700],
       // bgColor: deepPurple[100],
       // paperBgColor: deepPurple[700],
-      color: green[700],
+      color: green[600],
       bgColor: green[50],
       paperBgColor: green[500],
     },
